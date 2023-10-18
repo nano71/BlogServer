@@ -2,6 +2,7 @@ package main
 
 import (
 	"blogServer/router"
+	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
 )
 
@@ -9,7 +10,8 @@ func main() {
 	//gin.SetMode(gin.ReleaseMode)
 	// 创建 Gin 路由
 	ginServer := gin.Default()
-	ginServer.Use(router.Middleware())
+	ginServer.Use(cors.Default())
+	ginServer.Use(router.Default())
 
 	//db := database.GetDB()
 

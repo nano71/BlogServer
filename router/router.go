@@ -2,6 +2,7 @@ package router
 
 import (
 	"github.com/gin-gonic/gin"
+	"net/http"
 )
 
 // Router 自定义路由器
@@ -37,8 +38,7 @@ func (r *Router) Preprocessor() gin.HandlerFunc {
 		if ok {
 			handler(c)
 		} else {
-			// 不支持的请求方法
-			c.AbortWithStatus(405)
+			c.AbortWithStatus(http.StatusMethodNotAllowed)
 		}
 	}
 }

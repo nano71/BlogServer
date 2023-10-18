@@ -2,65 +2,107 @@ package api
 
 import (
 	"blogServer/database"
+	"blogServer/response"
 	"github.com/gin-gonic/gin"
 	"gorm.io/gorm"
-	"net/http"
+	"log/slog"
 	"time"
 )
 
 type Article struct {
-	Id         int       `json:"id,omitempty"`
-	Title      string    `json:"title,omitempty"`
-	Content    string    `json:"content,omitempty"`
+	Id         int       `json:"id"`
+	Title      string    `json:"title"`
+	Content    string    `json:"content"`
 	UpdateTime time.Time `json:"updateTime"`
 	CreateTime time.Time `json:"createTime"`
-	Labels     string    `json:"labels,omitempty"`
-}
-type Comment struct {
-	ArticleId int    `json:"article_id,omitempty"`
-	Email     string `json:"email,omitempty"`
-	Content   string `json:"content,omitempty"`
-	Site      string `json:"site,omitempty"`
+	Labels     string    `json:"labels"`
 }
 
-func GetComments(c *gin.Context) {
-	type Params struct {
-		ArticleId int `json:"articleId"`
-		Limit     int `json:"limit"`
-		Page      int `json:"page"`
-	}
-	params := Params{}
-	db := preprocess(c, params)
-	var comments []Comment
-	db.Where("article_id = ?", params.ArticleId).Limit(params.Limit).Offset(params.Page * params.Limit).Find(&comments)
-
-	c.JSON(200, comments)
-}
-
-func preprocess(c *gin.Context, model interface{}) *gorm.DB {
-	err := c.BindJSON(&model)
+func preprocess(c *gin.Context, p interface{}, callback func(*gorm.DB)) {
+	c.Header("Content-Type", "application/json")
+	err := c.BindJSON(&p)
 	if err != nil {
-		c.JSON(http.StatusBadRequest, nil)
-		return nil
+		response.ParameterError(c)
+		return
 	}
-	return database.GetDB()
+	callback(database.GetDB())
 }
 
 func GetArticleList(c *gin.Context) {
-	type Params struct {
+	p := &struct {
 		Limit int `json:"limit"`
 		Page  int `json:"page"`
-	}
-	var (
-		params   = &Params{}
-		articles []Article
-	)
+	}{}
 
-	db := preprocess(c, params)
-	if db == nil {
-		return
-	}
-	db.Limit(params.Limit).Offset(params.Page * params.Limit).Find(&articles)
+	preprocess(c, p, func(db *gorm.DB) {
+		articles := &[]Article{}
+		slog.Info("", p)
+		db.Limit(p.Limit).Offset(p.Page * p.Limit).Order("create_time desc").Find(articles)
+		var count int64
+		db.Model(Article{}).Count(&count)
+		data := gin.H{
+			"count": count,
+			"list":  articles,
+		}
+		response.Success(c, data)
+	})
 
-	c.JSON(200, articles)
+}
+
+func SearchArticles(c *gin.Context) {
+	p := &struct {
+		Search string `json:"search"`
+		Limit  int    `json:"limit"`
+		Page   int    `json:"page"`
+	}{}
+
+	preprocess(c, p, func(db *gorm.DB) {
+		articles := &[]Article{}
+		search := "%" + p.Search + "%"
+		where := db.Where("title like ?", search).Or("content like ?", search)
+		where.Find(articles)
+		var count int64
+		where.Count(&count)
+		data := gin.H{
+			"count": count,
+			"list":  articles,
+		}
+		response.Success(c, data)
+	})
+
+}
+
+func SearchArticlesByLabel(c *gin.Context) {
+	p := &struct {
+		Label string `json:"label"`
+		Limit int    `json:"limit"`
+		Page  int    `json:"page"`
+	}{}
+
+	preprocess(c, p, func(db *gorm.DB) {
+		articles := &[]Article{}
+		where := db.Where("labels like ?", "%"+p.Label+"%")
+		where.Find(articles)
+
+		var count int64
+		where.Count(&count)
+		data := gin.H{
+			"count": count,
+			"list":  articles,
+		}
+		response.Success(c, data)
+	})
+}
+
+func GetArticleContent(c *gin.Context) {
+	p := &struct {
+		ArticleId int `json:"articleId"`
+	}{}
+	preprocess(c, p, func(db *gorm.DB) {
+		article := &Article{
+			Id: p.ArticleId,
+		}
+		db.First(article)
+		response.Success(c, article)
+	})
 }
