@@ -10,12 +10,13 @@ import (
 )
 
 type Article struct {
-	Id         int       `json:"id"`
-	Title      string    `json:"title"`
-	Content    string    `json:"content"`
-	UpdateTime time.Time `json:"updateTime"`
-	CreateTime time.Time `json:"createTime"`
-	Labels     string    `json:"labels"`
+	Id              int       `json:"id"`
+	Title           string    `json:"title"`
+	Content         string    `json:"content"`
+	UpdateTime      time.Time `json:"updateTime"`
+	CreateTime      time.Time `json:"createTime"`
+	Labels          string    `json:"labels"`
+	BackgroundImage string    `json:"backgroundImage"`
 }
 
 func preprocess(c *gin.Context, p interface{}, callback func(*gorm.DB)) {
@@ -37,7 +38,7 @@ func GetArticleList(c *gin.Context) {
 	preprocess(c, p, func(db *gorm.DB) {
 		articles := &[]Article{}
 		slog.Info("", p)
-		db.Limit(p.Limit).Offset(p.Page * p.Limit).Order("create_time desc").Find(articles)
+		db.Limit(p.Limit).Offset(p.Page * p.Limit).Order("update_time desc").Find(articles)
 		var count int64
 		db.Model(Article{}).Count(&count)
 		data := gin.H{
