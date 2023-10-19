@@ -12,19 +12,23 @@ import (
 type Article struct {
 	Id              int       `json:"id"`
 	Title           string    `json:"title"`
+	Description     string    `json:"description"`
 	Content         string    `json:"content"`
 	UpdateTime      time.Time `json:"updateTime"`
 	CreateTime      time.Time `json:"createTime"`
-	Labels          string    `json:"labels"`
+	Tags            string    `json:"Tags"`
 	BackgroundImage string    `json:"backgroundImage"`
+	ReadCount       int       `json:"readCount"`
 }
 
 func preprocess(c *gin.Context, p interface{}, callback func(*gorm.DB)) {
 	c.Header("Content-Type", "application/json")
-	err := c.BindJSON(&p)
-	if err != nil {
-		response.ParameterError(c)
-		return
+	if p != nil {
+		err := c.BindJSON(&p)
+		if err != nil {
+			response.ParameterError(c)
+			return
+		}
 	}
 	callback(database.GetDB())
 }
@@ -38,7 +42,7 @@ func GetArticleList(c *gin.Context) {
 	preprocess(c, p, func(db *gorm.DB) {
 		articles := &[]Article{}
 		slog.Info("", p)
-		db.Limit(p.Limit).Offset(p.Page * p.Limit).Order("update_time desc").Find(articles)
+		db.Limit(p.Limit).Offset(p.Page * p.Limit).Order("create_time desc").Find(articles)
 		var count int64
 		db.Model(Article{}).Count(&count)
 		data := gin.H{
@@ -73,7 +77,7 @@ func SearchArticles(c *gin.Context) {
 
 }
 
-func SearchArticlesByLabel(c *gin.Context) {
+func SearchArticlesByTag(c *gin.Context) {
 	p := &struct {
 		Label string `json:"label"`
 		Limit int    `json:"limit"`

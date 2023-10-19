@@ -26,7 +26,9 @@ func Default() gin.HandlerFunc {
 
 	r.POST("/api/searchArticles", api.SearchArticles)
 
-	r.POST("/api/searchArticlesByLabel", api.SearchArticlesByLabel)
+	r.POST("/api/searchArticlesByTag", api.SearchArticlesByTag)
+
+	r.POST("/api/getTagList", api.GetTagList)
 
 	return r.Preprocessor()
 }
