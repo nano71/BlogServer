@@ -10,15 +10,15 @@ import (
 )
 
 type Article struct {
-	Id              int       `json:"id"`
-	Title           string    `json:"title"`
-	Description     string    `json:"description"`
-	Content         string    `json:"content"`
-	UpdateTime      time.Time `json:"updateTime"`
-	CreateTime      time.Time `json:"createTime"`
-	Tags            string    `json:"Tags"`
-	BackgroundImage string    `json:"backgroundImage"`
-	ReadCount       int       `json:"readCount"`
+	Id          int       `json:"id"`
+	Title       string    `json:"title"`
+	Description string    `json:"description"`
+	Content     string    `json:"content"`
+	UpdateTime  time.Time `json:"updateTime"`
+	CreateTime  time.Time `json:"createTime"`
+	Tags        string    `json:"tags"`
+	CoverImage  string    `json:"coverImage"`
+	ReadCount   int       `json:"readCount"`
 }
 
 func preprocess(c *gin.Context, p interface{}, callback func(*gorm.DB)) {
@@ -38,11 +38,17 @@ func GetArticleList(c *gin.Context) {
 		Limit int `json:"limit"`
 		Page  int `json:"page"`
 	}{}
-
 	preprocess(c, p, func(db *gorm.DB) {
-		articles := &[]Article{}
+		articles := &[]struct {
+			Id          int       `json:"id"`
+			Title       string    `json:"title"`
+			Description string    `json:"description"`
+			CreateTime  time.Time `json:"createTime"`
+			Tags        string    `json:"tags"`
+			CoverImage  string    `json:"coverImage"`
+		}{}
 		slog.Info("", p)
-		db.Limit(p.Limit).Offset(p.Page * p.Limit).Order("create_time desc").Find(articles)
+		db.Model(Article{}).Limit(p.Limit).Offset(p.Page * p.Limit).Order("create_time desc").Find(articles)
 		var count int64
 		db.Model(Article{}).Count(&count)
 		data := gin.H{
