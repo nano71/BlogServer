@@ -20,6 +20,32 @@ func ParameterError(c *gin.Context) {
 	})
 }
 
+func unauthorizedError(c *gin.Context) {
+	code := http.StatusUnauthorized
+	c.JSON(code, responseData{
+		Code:    code,
+		Message: "未经授权的",
+		Data:    nil,
+	})
+}
+
+func Custom(c *gin.Context, code int, message string, data any) {
+	c.JSON(code, responseData{
+		Code:    code,
+		Message: message,
+		Data:    data,
+	})
+}
+
+func MissingParametersError(c *gin.Context) {
+	code := http.StatusBadRequest
+	c.JSON(code, responseData{
+		Code:    code,
+		Message: "缺少参数",
+		Data:    nil,
+	})
+}
+
 func Success(c *gin.Context, data any) {
 	code := http.StatusOK
 	c.JSON(code, responseData{

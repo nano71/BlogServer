@@ -14,10 +14,16 @@ type Tag struct {
 	Count   int64  `json:"count"`
 }
 
+var tags []Tag
+var shouldFetchData = true
+
 func GetTagList(c *gin.Context) {
 
 	preprocess(c, nil, func(db *gorm.DB) {
-		var tags []Tag
+		if !shouldFetchData {
+			response.Success(c, tags)
+			return
+		}
 		db.Find(&tags)
 
 		for i, tag := range tags {
@@ -29,7 +35,7 @@ func GetTagList(c *gin.Context) {
 		sort.Slice(tags, func(i, j int) bool {
 			return tags[i].Count > tags[j].Count
 		})
-
+		shouldFetchData = false
 		response.Success(c, tags)
 	})
 }

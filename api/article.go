@@ -1,7 +1,6 @@
 package api
 
 import (
-	"blogServer/database"
 	"blogServer/response"
 	"github.com/gin-gonic/gin"
 	"gorm.io/gorm"
@@ -10,32 +9,20 @@ import (
 )
 
 type Article struct {
-	Id          int       `json:"id"`
-	Title       string    `json:"title"`
-	Description string    `json:"description"`
-	Content     string    `json:"content"`
-	UpdateTime  time.Time `json:"updateTime"`
-	CreateTime  time.Time `json:"createTime"`
-	Tags        string    `json:"tags"`
-	CoverImage  string    `json:"coverImage"`
-	ReadCount   int       `json:"readCount"`
-}
-
-func preprocess(c *gin.Context, p interface{}, callback func(*gorm.DB)) {
-	c.Header("Content-Type", "application/json")
-	if p != nil {
-		err := c.BindJSON(&p)
-		if err != nil {
-			response.ParameterError(c)
-			return
-		}
-	}
-	callback(database.GetDB())
+	Id          int    `json:"id"`
+	Title       string `json:"title"`
+	Description string `json:"description"`
+	Content     string `json:"content"`
+	UpdateTime  string `json:"updateTime"`
+	CreateTime  string `json:"createTime"`
+	Tags        string `json:"tags"`
+	CoverImage  string `json:"coverImage"`
+	ReadCount   int    `json:"readCount"`
 }
 
 func GetArticleList(c *gin.Context) {
 	p := &struct {
-		Limit int `json:"limit"`
+		Limit int `json:"limit" binding:"required"`
 		Page  int `json:"page"`
 	}{}
 	preprocess(c, p, func(db *gorm.DB) {
@@ -62,8 +49,8 @@ func GetArticleList(c *gin.Context) {
 
 func SearchArticles(c *gin.Context) {
 	p := &struct {
-		Search string `json:"search"`
-		Limit  int    `json:"limit"`
+		Search string `json:"search" binding:"required"`
+		Limit  int    `json:"limit" binding:"required"`
 		Page   int    `json:"page"`
 	}{}
 
@@ -85,8 +72,8 @@ func SearchArticles(c *gin.Context) {
 
 func SearchArticlesByTag(c *gin.Context) {
 	p := &struct {
-		Label string `json:"label"`
-		Limit int    `json:"limit"`
+		Label string `json:"label" binding:"required"`
+		Limit int    `json:"limit" binding:"required"`
 		Page  int    `json:"page"`
 	}{}
 
@@ -107,7 +94,7 @@ func SearchArticlesByTag(c *gin.Context) {
 
 func GetArticleContent(c *gin.Context) {
 	p := &struct {
-		ArticleId int `json:"articleId"`
+		ArticleId int `json:"articleId" binding:"required"`
 	}{}
 	preprocess(c, p, func(db *gorm.DB) {
 		article := &Article{
@@ -115,5 +102,33 @@ func GetArticleContent(c *gin.Context) {
 		}
 		db.First(article)
 		response.Success(c, article)
+	})
+}
+
+func PublishArticle(c *gin.Context) {
+	p := &struct {
+		Title       string `json:"title" binding:"required"`
+		Content     string `json:"content" binding:"required"`
+		Description string `json:"description" binding:"required"`
+		CreateTime  string `json:"createTime" binding:"required"`
+		CoverImage  string `json:"coverImage"`
+		Tags        string `json:"tags"`
+	}{}
+	preprocess(c, p, func(db *gorm.DB) {
+		article := &Article{
+			Title:       p.Title,
+			Content:     p.Content,
+			Description: p.Description,
+			CreateTime:  p.CreateTime,
+			CoverImage:  p.CoverImage,
+			Tags:        p.Tags,
+		}
+		result := db.Omit("UpdateTime").Create(article)
+		if result.RowsAffected == 1 {
+			response.Success(c, true)
+			shouldFetchData = true
+		} else {
+			response.Fail(c, "文章发布失败")
+		}
 	})
 }

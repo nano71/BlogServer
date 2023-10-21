@@ -11,9 +11,6 @@ func Default() gin.HandlerFunc {
 		routes: make(map[string]gin.HandlerFunc),
 	}
 
-	r.POST("/", func(context *gin.Context) {
-		slog.Info("api", context.Request.Body)
-	})
 	r.POST("/api/addComment", api.AddComment)
 
 	r.POST("/api/validateKey", api.ValidateKey)
@@ -30,5 +27,10 @@ func Default() gin.HandlerFunc {
 
 	r.POST("/api/getTagList", api.GetTagList)
 
+	r.POST("/api/uploadImage", api.UploadImage)
+
+	r.POST("/api/publishArticle", api.PublishArticle)
+
+	r.POST("/api/getPermission", api.GetPermission)
 	return r.Preprocessor()
 }

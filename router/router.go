@@ -1,7 +1,10 @@
 package router
 
 import (
+	"crypto/rand"
+	"encoding/base64"
 	"github.com/gin-gonic/gin"
+	"github.com/golang-jwt/jwt/v5"
 	"net/http"
 )
 
@@ -25,14 +28,30 @@ func (r *Router) add(method string, path string, handler gin.HandlerFunc) {
 func (r *Router) GET(path string, handler gin.HandlerFunc) {
 	r.add("GET", path, handler)
 }
+func ParseJWT(tokenString string, secretKey string) (*jwt.Token, error) {
+	token, err := jwt.Parse(tokenString, func(token *jwt.Token) (interface{}, error) {
+		return []byte(secretKey), nil
+	})
 
-// Preprocessor 处理请求
+	if err != nil {
+		return nil, err
+	}
+
+	return token, nil
+}
+func randomString(length int) (string, error) {
+	randomBytes := make([]byte, length)
+	_, err := rand.Read(randomBytes)
+	if err != nil {
+		return "", err
+	}
+	randomString := base64.StdEncoding.EncodeToString(randomBytes)
+	return randomString[:length], nil
+}
 func (r *Router) Preprocessor() gin.HandlerFunc {
 	return func(c *gin.Context) {
-		// 获取请求方法
 		method := c.Request.Method
 
-		// 路由分发
 		handler, ok := r.routes[method+" "+c.Request.URL.Path]
 
 		if ok {
