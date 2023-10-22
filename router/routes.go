@@ -3,7 +3,6 @@ package router
 import (
 	"blogServer/api"
 	"github.com/gin-gonic/gin"
-	"log/slog"
 )
 
 func Default() gin.HandlerFunc {
