@@ -36,10 +36,10 @@ func GetArticleList(c *gin.Context) {
 		}{}
 		slog.Info("", p)
 		db.Model(Article{}).Limit(p.Limit).Offset(p.Page * p.Limit).Order("create_time desc").Find(articles)
-		var count int64
-		db.Model(Article{}).Count(&count)
+		var total int64
+		db.Model(Article{}).Count(&total)
 		data := gin.H{
-			"count": count,
+			"total": total,
 			"list":  articles,
 		}
 		response.Success(c, data)
@@ -59,10 +59,10 @@ func SearchArticles(c *gin.Context) {
 		search := "%" + p.Search + "%"
 		where := db.Where("title like ?", search).Or("content like ?", search)
 		where.Find(articles)
-		var count int64
-		where.Count(&count)
+		var total int64
+		where.Count(&total)
 		data := gin.H{
-			"count": count,
+			"total": total,
 			"list":  articles,
 		}
 		response.Success(c, data)
@@ -82,10 +82,10 @@ func SearchArticlesByTag(c *gin.Context) {
 		where := db.Where("labels like ?", "%"+p.Label+"%")
 		where.Find(articles)
 
-		var count int64
-		where.Count(&count)
+		var total int64
+		where.Count(&total)
 		data := gin.H{
-			"count": count,
+			"total": total,
 			"list":  articles,
 		}
 		response.Success(c, data)
