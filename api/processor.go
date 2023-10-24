@@ -3,9 +3,11 @@ package api
 import (
 	"blogServer/database"
 	"blogServer/response"
+	"github.com/gin-contrib/timeout"
 	"github.com/gin-gonic/gin"
 	"gorm.io/gorm"
 	"strings"
+	"time"
 )
 
 func isParameterMissingError(err error) bool {
@@ -16,7 +18,7 @@ func preprocess(c *gin.Context, p interface{}, callback func(*gorm.DB)) {
 
 	if err := c.ShouldBind(p); err != nil {
 		if isParameterMissingError(err) {
-			response.MissingParametersError(c)
+			response.MissingParameters(c)
 		} else {
 			response.ParameterError(c)
 		}
@@ -31,4 +33,14 @@ func GetPermission(c *gin.Context) {
 	//p := &struct {
 	//	SecretKey string `json:"secretKey" binding:"required"`
 	//}{}
+}
+
+func TimeoutMiddleware() gin.HandlerFunc {
+	return timeout.New(
+		timeout.WithTimeout(2000*time.Millisecond),
+		timeout.WithHandler(func(c *gin.Context) {
+			c.Next()
+		}),
+		timeout.WithResponse(response.Timeout),
+	)
 }

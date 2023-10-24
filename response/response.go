@@ -20,7 +20,7 @@ func ParameterError(c *gin.Context) {
 	})
 }
 
-func unauthorizedError(c *gin.Context) {
+func unauthorized(c *gin.Context) {
 	code := http.StatusUnauthorized
 	c.JSON(code, responseData{
 		Code:    code,
@@ -37,7 +37,7 @@ func Custom(c *gin.Context, code int, message string, data any) {
 	})
 }
 
-func MissingParametersError(c *gin.Context) {
+func MissingParameters(c *gin.Context) {
 	code := http.StatusBadRequest
 	c.JSON(code, responseData{
 		Code:    code,
@@ -57,9 +57,18 @@ func Success(c *gin.Context, data any) {
 
 func Fail(c *gin.Context, message string) {
 	code := http.StatusInternalServerError
-	c.JSON(http.StatusInternalServerError, responseData{
+	c.JSON(code, responseData{
 		Code:    code,
 		Message: message,
+		Data:    nil,
+	})
+}
+
+func Timeout(c *gin.Context) {
+	code := http.StatusGatewayTimeout
+	c.JSON(code, responseData{
+		Code:    code,
+		Message: "请求超时",
 		Data:    nil,
 	})
 }

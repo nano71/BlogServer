@@ -49,14 +49,14 @@ func GetArticleList(c *gin.Context) {
 
 func SearchArticles(c *gin.Context) {
 	p := &struct {
-		Search string `json:"search" binding:"required"`
-		Limit  int    `json:"limit" binding:"required"`
-		Page   int    `json:"page"`
+		Query string `json:"query" binding:"required"`
+		Limit int    `json:"limit" binding:"required"`
+		Page  int    `json:"page"`
 	}{}
 
 	preprocess(c, p, func(db *gorm.DB) {
 		articles := &[]Article{}
-		search := "%" + p.Search + "%"
+		search := "%" + p.Query + "%"
 		where := db.Where("title like ?", search).Or("content like ?", search)
 		where.Find(articles)
 		var total int64

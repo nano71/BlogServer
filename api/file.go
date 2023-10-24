@@ -8,7 +8,7 @@ import (
 func UploadImage(c *gin.Context) {
 	file, err := c.FormFile("file")
 	if err != nil {
-		response.MissingParametersError(c)
+		response.MissingParameters(c)
 		return
 	}
 
