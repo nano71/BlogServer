@@ -11,9 +11,9 @@ import (
 var _db *gorm.DB
 
 func init() {
-	username := "nano71"
+	username := "blog"
 	password := "123456"
-	host := "nano71.com"
+	host := "localhost"
 	port := 3306
 	database := "blog"
 	timeout := "10s"

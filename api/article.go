@@ -9,15 +9,16 @@ import (
 )
 
 type Article struct {
-	Id          int    `json:"id"`
-	Title       string `json:"title"`
-	Description string `json:"description"`
-	Content     string `json:"content"`
-	UpdateTime  string `json:"updateTime"`
-	CreateTime  string `json:"createTime"`
-	Tags        string `json:"tags"`
-	CoverImage  string `json:"coverImage"`
-	ReadCount   int    `json:"readCount"`
+	Id           int    `json:"id"`
+	Title        string `json:"title"`
+	Description  string `json:"description"`
+	Content      string `json:"content"`
+	UpdateTime   string `json:"updateTime"`
+	CreateTime   string `json:"createTime"`
+	Tags         string `json:"tags"`
+	CoverImage   string `json:"coverImage"`
+	ReadCount    int    `json:"readCount"`
+	CommentCount int    `json:"commentCount"`
 }
 
 func GetArticleList(c *gin.Context) {

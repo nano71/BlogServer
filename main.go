@@ -15,5 +15,5 @@ func main() {
 	ginServer.Static("/uploads", "./uploads")
 	ginServer.Use(router.Default())
 
-	_ = ginServer.Run()
+	_ = ginServer.Run(":9000")
 }

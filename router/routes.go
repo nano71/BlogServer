@@ -27,5 +27,8 @@ func Default() gin.HandlerFunc {
 	r.POST("/api/publishArticle", api.PublishArticle)
 
 	r.POST("/api/getPermission", api.GetPermission)
+
+	r.POST("/api/updateArticleCommentCount", api.UpdateArticleCommentCount)
+
 	return r.Preprocessor()
 }
