@@ -11,7 +11,7 @@ func main() {
 	//gin.SetMode(gin.ReleaseMode)
 	ginServer := gin.Default()
 	ginServer.Use(cors.Default())
-	ginServer.Use(api.TimeoutMiddleware())
+	ginServer.Use(api.TimeoutMiddleware(10000))
 	ginServer.Static("/uploads", "./uploads")
 	ginServer.Use(router.Default())
 

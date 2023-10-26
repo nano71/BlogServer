@@ -35,9 +35,9 @@ func GetPermission(c *gin.Context) {
 	//}{}
 }
 
-func TimeoutMiddleware() gin.HandlerFunc {
+func TimeoutMiddleware(limit time.Duration) gin.HandlerFunc {
 	return timeout.New(
-		timeout.WithTimeout(2000*time.Millisecond),
+		timeout.WithTimeout(limit*time.Millisecond),
 		timeout.WithHandler(func(c *gin.Context) {
 			c.Next()
 		}),

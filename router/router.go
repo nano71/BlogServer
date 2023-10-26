@@ -6,7 +6,6 @@ import (
 	"github.com/gin-gonic/gin"
 	"github.com/golang-jwt/jwt/v5"
 	"net/http"
-	"time"
 )
 
 // Router 自定义路由器
@@ -51,7 +50,7 @@ func randomString(length int) (string, error) {
 }
 func (r *Router) Preprocessor() gin.HandlerFunc {
 	return func(c *gin.Context) {
-		time.Sleep(2000 * time.Millisecond)
+		//time.Sleep(2000 * time.Millisecond)
 		method := c.Request.Method
 
 		handler, ok := r.routes[method+" "+c.Request.URL.Path]

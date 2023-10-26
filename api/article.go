@@ -35,9 +35,8 @@ func GetArticleList(c *gin.Context) {
 			CoverImage  string    `json:"coverImage"`
 		}{}
 		slog.Info("", p)
-		db.Model(Article{}).Limit(p.Limit).Offset(p.Page * p.Limit).Order("create_time desc").Find(articles)
 		var total int64
-		db.Model(Article{}).Count(&total)
+		db.Model(Article{}).Count(&total).Limit(p.Limit).Offset(p.Page * p.Limit).Order("create_time desc").Find(articles)
 		data := gin.H{
 			"total": total,
 			"list":  articles,
@@ -57,10 +56,9 @@ func SearchArticles(c *gin.Context) {
 	preprocess(c, p, func(db *gorm.DB) {
 		articles := &[]Article{}
 		search := "%" + p.Query + "%"
-		where := db.Where("title like ?", search).Or("content like ?", search)
-		where.Find(articles)
+		where := db.Model(Article{}).Where("title like ?", search).Or("content like ?", search)
 		var total int64
-		where.Count(&total)
+		where.Count(&total).Limit(p.Limit).Offset(p.Page * p.Limit).Order("create_time desc").Find(articles)
 		data := gin.H{
 			"total": total,
 			"list":  articles,
@@ -72,18 +70,16 @@ func SearchArticles(c *gin.Context) {
 
 func SearchArticlesByTag(c *gin.Context) {
 	p := &struct {
-		Label string `json:"label" binding:"required"`
+		Tag   string `json:"tag" binding:"required"`
 		Limit int    `json:"limit" binding:"required"`
 		Page  int    `json:"page"`
 	}{}
 
 	preprocess(c, p, func(db *gorm.DB) {
 		articles := &[]Article{}
-		where := db.Where("labels like ?", "%"+p.Label+"%")
-		where.Find(articles)
-
+		where := db.Model(Article{}).Where("tags like ?", "%"+p.Tag+"%")
 		var total int64
-		where.Count(&total)
+		where.Count(&total).Limit(p.Limit).Offset(p.Page * p.Limit).Order("create_time desc").Find(articles)
 		data := gin.H{
 			"total": total,
 			"list":  articles,

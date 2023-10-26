@@ -10,11 +10,7 @@ func Default() gin.HandlerFunc {
 		routes: make(map[string]gin.HandlerFunc),
 	}
 
-	r.POST("/api/addComment", api.AddComment)
-
 	r.POST("/api/validateKey", api.ValidateKey)
-
-	r.POST("/api/getArticleComments", api.GetArticleComments)
 
 	r.POST("/api/getArticleContent", api.GetArticleContent)
 
