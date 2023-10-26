@@ -1,0 +1,1 @@
+killall blogServer_linux

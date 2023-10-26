@@ -5,6 +5,8 @@ import (
 	"blogServer/router"
 	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
+	"log"
+	"net/http"
 )
 
 func main() {
@@ -15,5 +17,14 @@ func main() {
 	ginServer.Static("/uploads", "./uploads")
 	ginServer.Use(router.Default())
 
-	_ = ginServer.Run(":9000")
+	//_ = ginServer.Run(":9000")
+	server := &http.Server{
+		Addr:    ":9000",
+		Handler: ginServer,
+	}
+
+	err := server.ListenAndServeTLS("nano71.com_bundle.crt", "nano71.com.key")
+	if err != nil {
+		log.Fatal("Failed to start HTTPS server: ", err)
+	}
 }
