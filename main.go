@@ -5,7 +5,7 @@ import (
 	"blogServer/router"
 	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
-	"log"
+	"log/slog"
 	"net/http"
 )
 
@@ -25,6 +25,7 @@ func main() {
 
 	err := server.ListenAndServeTLS("nano71.com_bundle.crt", "nano71.com.key")
 	if err != nil {
-		log.Fatal("Failed to start HTTPS server: ", err)
+		slog.Error("Failed to start HTTPS server", err)
 	}
+	slog.Info("blogServer started.")
 }

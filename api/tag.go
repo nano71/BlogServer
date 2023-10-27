@@ -28,7 +28,7 @@ func GetTagList(c *gin.Context) {
 
 		for i, tag := range tags {
 			var count int64
-			db.Debug().Model(&Article{}).Where("tags LIKE ?", fmt.Sprintf("%%%s%%", tag.Name)).Count(&count)
+			db.Model(&Article{}).Where("tags LIKE ?", fmt.Sprintf("%%%s%%", tag.Name)).Count(&count)
 			tags[i].Count = count
 		}
 

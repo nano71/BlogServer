@@ -4,7 +4,6 @@ import (
 	"blogServer/response"
 	"github.com/gin-gonic/gin"
 	"gorm.io/gorm"
-	"log/slog"
 	"time"
 )
 
@@ -35,7 +34,6 @@ func GetArticleList(c *gin.Context) {
 			Tags        string    `json:"tags"`
 			CoverImage  string    `json:"coverImage"`
 		}{}
-		slog.Info("", p)
 		var total int64
 		db.Model(Article{}).Count(&total).Limit(p.Limit).Offset(p.Page * p.Limit).Order("create_time desc").Find(articles)
 		data := gin.H{
