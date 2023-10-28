@@ -18,6 +18,7 @@ type Article struct {
 	CoverImage   string `json:"coverImage"`
 	ReadCount    int    `json:"readCount"`
 	CommentCount int    `json:"commentCount"`
+	Markdown     string `json:"markdown"`
 }
 
 func GetArticleList(c *gin.Context) {
@@ -105,7 +106,8 @@ func PublishArticle(c *gin.Context) {
 		Title       string `json:"title" binding:"required"`
 		Content     string `json:"content" binding:"required"`
 		Description string `json:"description" binding:"required"`
-		CreateTime  string `json:"createTime" binding:"required"`
+		Markdown    string `json:"markdown" binding:"required"`
+		CreateTime  string `json:"createTime" binding:"required" `
 		CoverImage  string `json:"coverImage"`
 		Tags        string `json:"tags"`
 	}{}
@@ -114,6 +116,7 @@ func PublishArticle(c *gin.Context) {
 			Title:       p.Title,
 			Content:     p.Content,
 			Description: p.Description,
+			Markdown:    p.Markdown,
 			CreateTime:  p.CreateTime,
 			CoverImage:  p.CoverImage,
 			Tags:        p.Tags,
