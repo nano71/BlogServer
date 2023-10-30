@@ -51,8 +51,8 @@ func randomString(length int) (string, error) {
 func (r *Router) Preprocessor() gin.HandlerFunc {
 	return func(c *gin.Context) {
 		//time.Sleep(2000 * time.Millisecond)
-		method := c.Request.Method
 
+		method := c.Request.Method
 		handler, ok := r.routes[method+" "+c.Request.URL.Path]
 
 		if ok {
