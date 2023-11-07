@@ -13,9 +13,9 @@ func main() {
 	time.Local = time.FixedZone("CST", 8*3600)
 	//gin.SetMode(gin.ReleaseMode)
 	ginServer := gin.Default()
+	ginServer.Static("/uploads", "./uploads")
 	ginServer.Use(api.Cors())
 	ginServer.Use(api.TimeoutMiddleware(10000))
-	ginServer.Static("/uploads", "./uploads")
 	ginServer.Use(router.Default())
 
 	//_ = ginServer.Run(":9000")
