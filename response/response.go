@@ -72,3 +72,12 @@ func Timeout(c *gin.Context) {
 		Data:    nil,
 	})
 }
+
+func Forbidden(c *gin.Context) {
+	code := http.StatusForbidden
+	c.JSON(code, responseData{
+		Code:    code,
+		Message: "IP address is banned",
+		Data:    nil,
+	})
+}

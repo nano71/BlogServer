@@ -6,6 +6,7 @@ import (
 	"github.com/gin-contrib/timeout"
 	"github.com/gin-gonic/gin"
 	"gorm.io/gorm"
+	"net/http"
 	"strings"
 	"time"
 )
@@ -43,4 +44,35 @@ func TimeoutMiddleware(limit time.Duration) gin.HandlerFunc {
 		}),
 		timeout.WithResponse(response.Timeout),
 	)
+}
+
+var bannedIPs []string
+
+func InterceptorMiddleware() gin.HandlerFunc {
+	return func(c *gin.Context) {
+		clientIP := c.ClientIP()
+
+		if c.Request.Method == http.MethodGet {
+			bannedIPs = append(bannedIPs, clientIP)
+			response.Forbidden(c)
+			return
+		}
+
+		c.Next()
+	}
+}
+
+func IPBanMiddleware() gin.HandlerFunc {
+	return func(c *gin.Context) {
+		clientIP := c.ClientIP()
+
+		for _, bannedIP := range bannedIPs {
+			if clientIP == bannedIP {
+				response.Forbidden(c)
+				return
+			}
+		}
+
+		c.Next()
+	}
 }

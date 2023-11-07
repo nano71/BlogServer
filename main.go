@@ -16,6 +16,8 @@ func main() {
 	ginServer.Static("/uploads", "./uploads")
 	ginServer.Use(api.Cors())
 	ginServer.Use(api.TimeoutMiddleware(10000))
+	ginServer.Use(api.InterceptorMiddleware())
+	ginServer.Use(api.IPBanMiddleware())
 	ginServer.Use(router.Default())
 
 	//_ = ginServer.Run(":9000")
