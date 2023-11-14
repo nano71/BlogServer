@@ -4,11 +4,24 @@ import (
 	"blogServer/response"
 	"github.com/gin-gonic/gin"
 	"gorm.io/gorm"
-	"log/slog"
-	"strconv"
-	"strings"
 	"time"
 )
+
+type ReaderMap map[string]ReadArticles
+type ReadArticles []int
+
+func (readArticles ReadArticles) include(target int) bool {
+	found := false
+	for _, value := range readArticles {
+		if value == target {
+			found = true
+			break
+		}
+	}
+	return found
+}
+
+var readerMap = make(ReaderMap)
 
 type Article struct {
 	Id           int    `json:"id"`
@@ -99,35 +112,12 @@ func GetArticleContent(c *gin.Context) {
 		article := &Article{
 			Id: p.ArticleId,
 		}
-		db.First(article)
+		db = db.First(article)
 
-		cookie, err := c.Cookie("viewed_article_ids")
-		slog.Info("cookie", cookie)
-		articleIdStringify := strconv.Itoa(p.ArticleId)
-		domain := ".nano71.com"
-		canAddReadCount := false
-
-		if err != nil {
-			canAddReadCount = true
-			c.SetCookie("viewed_article_ids", articleIdStringify, 3600, "/", domain, false, true)
-		} else {
-			viewedArticleIdList := strings.Split(cookie, ",")
-			found := false
-			for _, item := range viewedArticleIdList {
-				if item == articleIdStringify {
-					found = true
-					break
-				}
-			}
-			if !found {
-				canAddReadCount = true
-				viewedArticleIdList = append(viewedArticleIdList, articleIdStringify)
-				cookie = strings.Join(viewedArticleIdList, ",")
-				c.SetCookie("viewed_article_ids", cookie, 3600, "/", domain, false, true)
-			}
-		}
-		if canAddReadCount {
-			db.Model(article).Update("read_count", article.ReadCount+1)
+		clientIP := c.ClientIP()
+		if !readerMap[clientIP].include(p.ArticleId) {
+			db.Update("read_count", article.ReadCount+1)
+			readerMap[clientIP] = append(readerMap[clientIP], p.ArticleId)
 		}
 
 		response.Success(c, article)

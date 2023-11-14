@@ -55,6 +55,7 @@ func InterceptorMiddleware() gin.HandlerFunc {
 		if c.Request.Method == http.MethodGet {
 			bannedIPs = append(bannedIPs, clientIP)
 			response.Forbidden(c)
+			c.Abort()
 			return
 		}
 
@@ -69,6 +70,7 @@ func IPBanMiddleware() gin.HandlerFunc {
 		for _, bannedIP := range bannedIPs {
 			if clientIP == bannedIP {
 				response.Forbidden(c)
+				c.Abort()
 				return
 			}
 		}

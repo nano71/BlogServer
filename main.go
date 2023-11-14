@@ -20,7 +20,6 @@ func main() {
 	ginServer.Use(api.IPBanMiddleware())
 	ginServer.Use(router.Default())
 
-	//_ = ginServer.Run(":9000")
 	server := &http.Server{
 		Addr:    ":9000",
 		Handler: ginServer,
@@ -29,6 +28,8 @@ func main() {
 	err := server.ListenAndServeTLS("nano71.com_bundle.crt", "nano71.com.key")
 	if err != nil {
 		slog.Error("Failed to start HTTPS server", err)
+		_ = ginServer.Run(":9000")
 	}
+
 	slog.Info("blogServer is running on port 9000.")
 }
