@@ -3,6 +3,8 @@ package api
 import (
 	"blogServer/response"
 	"github.com/gin-gonic/gin"
+	"strconv"
+	"time"
 )
 
 func UploadImage(c *gin.Context) {
@@ -11,11 +13,11 @@ func UploadImage(c *gin.Context) {
 		response.MissingParameters(c)
 		return
 	}
-
-	err = c.SaveUploadedFile(file, "uploads/"+file.Filename)
+	imagePath := "uploads/" + strconv.Itoa(int(time.Now().UnixNano()/1e6)) + "-" + file.Filename
+	err = c.SaveUploadedFile(file, imagePath)
 	if err != nil {
 		response.Fail(c, "文件保存失败")
 		return
 	}
-	response.Success(c, "/uploads/"+file.Filename)
+	response.Success(c, "/"+imagePath)
 }
