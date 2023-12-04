@@ -3,6 +3,7 @@ package main
 import (
 	"blogServer/api"
 	"blogServer/router"
+	"flag"
 	"github.com/gin-gonic/gin"
 	"log/slog"
 	"net/http"
@@ -11,7 +12,20 @@ import (
 
 func main() {
 	time.Local = time.FixedZone("CST", 8*3600)
-	//gin.SetMode(gin.ReleaseMode)
+
+	var protocol string
+	var isReleaseMode bool
+	flag.StringVar(&protocol, "protocol", "http", "目标协议,默认为http")
+	flag.BoolVar(&isReleaseMode, "releaseMode", false, "release模式,默认为false")
+	flag.Parse()
+	slog.Info("log", "目标协议为:", protocol)
+	slog.Info("log", "gin运行为release模式:", isReleaseMode)
+	var runError error
+	slog.Info("log", "blogServer is running on port 9000.")
+	if isReleaseMode {
+		gin.SetMode(gin.ReleaseMode)
+	}
+
 	ginServer := gin.Default()
 	ginServer.Static("/uploads", "./uploads")
 	ginServer.Use(api.Cors())
@@ -20,16 +34,19 @@ func main() {
 	ginServer.Use(api.IPBanMiddleware())
 	ginServer.Use(router.Default())
 
-	server := &http.Server{
-		Addr:    ":9000",
-		Handler: ginServer,
-	}
+	if protocol == "https" {
+		server := &http.Server{
+			Addr:    ":9000",
+			Handler: ginServer,
+		}
 
-	err := server.ListenAndServeTLS("nano71.com_bundle.crt", "nano71.com.key")
-	if err != nil {
-		slog.Error("Failed to start HTTPS server", err)
-		_ = ginServer.Run(":9000")
-	}
+		runError = server.ListenAndServeTLS("nano71.com_bundle.crt", "nano71.com.key")
 
-	slog.Info("blogServer is running on port 9000.")
+	} else {
+		//_ = ginServer.SetTrustedProxies([]string{"127.0.0.1"})
+		runError = ginServer.Run(":9000")
+	}
+	if runError != nil {
+		slog.Error("Failed to start HTTPS server", runError)
+	}
 }
