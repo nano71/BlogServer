@@ -27,6 +27,7 @@ func main() {
 	}
 
 	ginServer := gin.Default()
+	ginServer.StaticFile("/robots.txt", "./robots.txt")
 	ginServer.Static("/uploads", "./uploads")
 	ginServer.Use(api.Cors())
 	ginServer.Use(api.TimeoutMiddleware(10000))
