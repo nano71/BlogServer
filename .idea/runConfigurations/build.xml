@@ -1,6 +1,6 @@
 <component name="ProjectRunConfigurationManager">
   <configuration default="false" name="build" type="GoApplicationRunConfiguration" factoryName="Go Application">
-    <module name="blogServer" />
+    <module name="BlogServer" />
     <working_directory value="$PROJECT_DIR$" />
     <go_parameters value="-o ./out/blogServer_linux" />
     <envs>
