@@ -1,4 +1,5 @@
-create database blog;
+create database if not exists blog;
+use blog;
 create table if not exists article
 (
     id            int auto_increment
@@ -14,6 +15,7 @@ create table if not exists article
     comment_count int      default 0                 not null,
     markdown      text                               not null
 )
+    comment "文章表"
     charset = utf8mb4
     engine = InnoDB;
 
@@ -26,6 +28,17 @@ create table if not exists tag
     constraint label_pk
         unique (id)
 )
+    comment "分类标签表"
     charset = utf8mb4
     engine = InnoDB;
 
+create table if not exists guestbook
+(
+    id       int auto_increment primary key,
+    nickname varchar(255) not null,
+    content  text         not null,
+    url      varchar(255)
+
+)
+    comment "留言板表"
+    charset = utf8mb4
