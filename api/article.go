@@ -153,3 +153,57 @@ func PublishArticle(c *gin.Context) {
 		}
 	})
 }
+
+func UpdateArticle(c *gin.Context) {
+	p := &struct {
+		Id          int    `json:"id" binding:"required"`
+		Title       string `json:"title" binding:"required"`
+		Content     string `json:"content" binding:"required"`
+		Description string `json:"description" binding:"required"`
+		Markdown    string `json:"markdown" binding:"required"`
+		CreateTime  string `json:"createTime" binding:"required"`
+		CoverImage  string `json:"coverImage"`
+		Tags        string `json:"tags"`
+	}{}
+	preprocess(c, p, func(db *gorm.DB) {
+		article := &Article{
+			Id:          p.Id,
+			Title:       p.Title,
+			Content:     p.Content,
+			Description: p.Description,
+			Markdown:    p.Markdown,
+			CreateTime:  p.CreateTime,
+			CoverImage:  p.CoverImage,
+			Tags:        p.Tags,
+		}
+		result := db.Updates(article)
+		if result.RowsAffected == 1 {
+			response.Success(c, true)
+			shouldFetchData = true
+		} else {
+			response.Fail(c, "文章更新失败")
+		}
+	})
+}
+
+func ManagerGetArticleList(c *gin.Context) {
+	p := &struct {
+		Limit int `json:"limit" binding:"required"`
+		Page  int `json:"page"`
+	}{}
+	preprocess(c, p, func(db *gorm.DB) {
+		articles := &[]struct {
+			Id         int       `json:"id"`
+			Title      string    `json:"title"`
+			CreateTime time.Time `json:"createTime"`
+		}{}
+		var total int64
+		db.Model(Article{}).Count(&total).Limit(p.Limit).Offset(p.Page * p.Limit).Order("create_time desc").Find(articles)
+		data := gin.H{
+			"total": total,
+			"list":  articles,
+		}
+		response.Success(c, data)
+	})
+
+}
