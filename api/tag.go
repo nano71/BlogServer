@@ -11,7 +11,7 @@ import (
 type Tag struct {
 	Name    string `json:"name"`
 	Content string `json:"content"`
-	Count   int64  `json:"count"`
+	Count   int64  `json:"count" gorm:"-"`
 }
 
 var tags []Tag
@@ -37,5 +37,25 @@ func GetTagList(c *gin.Context) {
 		})
 		shouldFetchData = false
 		response.Success(c, tags)
+	})
+}
+
+func AddCategory(c *gin.Context) {
+	p := &struct {
+		Name    string `json:"name" binding:"required"`
+		Content string `json:"content" binding:"required"`
+	}{}
+	preprocess(c, p, func(db *gorm.DB) {
+		tag := &Tag{
+			Name:    p.Name,
+			Content: p.Content,
+		}
+		result := db.Create(tag)
+		if result.RowsAffected == 1 {
+			response.Success(c, true)
+			shouldFetchData = true
+		} else {
+			response.Fail(c, "标签添加失败")
+		}
 	})
 }

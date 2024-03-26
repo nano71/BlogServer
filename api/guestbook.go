@@ -15,6 +15,7 @@ type Message struct {
 	Content    string `json:"content"`
 	CreateTime string `json:"createTime"`
 	Ip         string
+	IsVisible  int
 }
 
 func (Message) TableName() string {
@@ -68,5 +69,22 @@ func GetMessageList(c *gin.Context) {
 			"list":  messageList,
 		}
 		response.Success(c, data)
+	})
+}
+
+func DeleteMessage(c *gin.Context) {
+	p := &struct {
+		MessageId int `json:"messageId" binding:"required"`
+	}{}
+	preprocess(c, p, func(db *gorm.DB) {
+		message := &Message{
+			Id: p.MessageId,
+		}
+		result := db.Delete(&message)
+		if result.RowsAffected == 1 {
+			response.Success(c, true)
+		} else {
+			response.Fail(c, "留言删除失败")
+		}
 	})
 }

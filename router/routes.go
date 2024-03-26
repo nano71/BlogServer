@@ -17,6 +17,8 @@ func Default() gin.HandlerFunc {
 	r.POST("/api/getArticleList", api.GetArticleList)
 
 	r.POST("/api/manage/getArticleList", api.ManagerGetArticleList)
+	r.POST("/api/manage/deleteMessage", api.DeleteMessage)
+	r.POST("/api/manage/addCategory", api.AddCategory)
 
 	r.POST("/api/getMessageList", api.GetMessageList)
 
