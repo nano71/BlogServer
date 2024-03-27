@@ -9,7 +9,7 @@ import (
 )
 
 type Tag struct {
-	Name    string `json:"name"`
+	Name    string `json:"name" gorm:"primaryKey"`
 	Content string `json:"content"`
 	Count   int64  `json:"count" gorm:"-"`
 }
@@ -56,6 +56,44 @@ func AddCategory(c *gin.Context) {
 			shouldFetchData = true
 		} else {
 			response.Fail(c, "标签添加失败")
+		}
+	})
+}
+
+func DeleteCategory(c *gin.Context) {
+	p := &struct {
+		TagName string `json:"tagName" binding:"required"`
+	}{}
+	preprocess(c, p, func(db *gorm.DB) {
+		tag := &Tag{
+			Name: p.TagName,
+		}
+		result := db.Delete(tag)
+		if result.RowsAffected == 1 {
+			response.Success(c, true)
+			shouldFetchData = true
+		} else {
+			response.Fail(c, "标签删除失败")
+		}
+	})
+}
+
+func UpdateCategory(c *gin.Context) {
+	p := &struct {
+		Name    string `json:"name" binding:"required"`
+		Content string `json:"content" binding:"required"`
+	}{}
+	preprocess(c, p, func(db *gorm.DB) {
+		tag := &Tag{
+			Name:    p.Name,
+			Content: p.Content,
+		}
+		result := db.Updates(tag)
+		if result.RowsAffected == 1 {
+			response.Success(c, true)
+			shouldFetchData = true
+		} else {
+			response.Fail(c, "标签更新失败")
 		}
 	})
 }

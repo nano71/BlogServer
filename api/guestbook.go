@@ -14,8 +14,8 @@ type Message struct {
 	Face       string `json:"face"`
 	Content    string `json:"content"`
 	CreateTime string `json:"createTime"`
-	Ip         string
-	IsVisible  int
+	Ip         string `json:"ip"`
+	IsVisible  int    `json:"isVisible"`
 }
 
 func (Message) TableName() string {
