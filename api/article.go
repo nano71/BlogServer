@@ -221,3 +221,21 @@ func UpdateArticleCommentCount(c *gin.Context) {
 		response.Success(c, nil)
 	})
 }
+
+func DeleteArticle(c *gin.Context) {
+	p := &struct {
+		ArticleId int `json:"articleId" binding:"required"`
+	}{}
+	preprocess(c, p, func(db *gorm.DB) {
+		article := &Article{
+			Id: p.ArticleId,
+		}
+		result := db.Delete(article)
+		if result.RowsAffected == 1 {
+			response.Success(c, true)
+			shouldFetchData = true
+		} else {
+			response.Fail(c, "文章删除失败")
+		}
+	})
+}
