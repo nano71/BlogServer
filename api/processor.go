@@ -3,12 +3,9 @@ package api
 import (
 	"blogServer/database"
 	"blogServer/response"
-	"github.com/gin-contrib/timeout"
 	"github.com/gin-gonic/gin"
 	"gorm.io/gorm"
-	"net/http"
 	"strings"
-	"time"
 )
 
 func isParameterMissingError(err error) bool {
@@ -34,47 +31,4 @@ func GetPermission(c *gin.Context) {
 	//p := &struct {
 	//	SecretKey string `json:"secretKey" binding:"required"`
 	//}{}
-}
-
-func TimeoutMiddleware(limit time.Duration) gin.HandlerFunc {
-	return timeout.New(
-		timeout.WithTimeout(limit*time.Millisecond),
-		timeout.WithHandler(func(c *gin.Context) {
-			c.Next()
-		}),
-		timeout.WithResponse(response.Timeout),
-	)
-}
-
-var bannedIPs []string
-
-func InterceptorMiddleware() gin.HandlerFunc {
-	return func(c *gin.Context) {
-		clientIP := c.ClientIP()
-
-		if c.Request.Method == http.MethodGet {
-			bannedIPs = append(bannedIPs, clientIP)
-			response.Forbidden(c)
-			c.Abort()
-			return
-		}
-
-		c.Next()
-	}
-}
-
-func IPBanMiddleware() gin.HandlerFunc {
-	return func(c *gin.Context) {
-		clientIP := c.ClientIP()
-
-		for _, bannedIP := range bannedIPs {
-			if clientIP == bannedIP {
-				response.Forbidden(c)
-				c.Abort()
-				return
-			}
-		}
-
-		c.Next()
-	}
 }

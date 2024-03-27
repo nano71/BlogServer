@@ -57,6 +57,7 @@ func GetArticleList(c *gin.Context) {
 			"total": total,
 			"list":  articles,
 		}
+		//logger.Info("article.go - 60", c.Request.Response.)
 		response.Success(c, data)
 	})
 

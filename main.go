@@ -1,7 +1,7 @@
 package main
 
 import (
-	"blogServer/api"
+	"blogServer/middleware"
 	"blogServer/router"
 	"flag"
 	"github.com/gin-gonic/gin"
@@ -29,10 +29,11 @@ func main() {
 	ginServer := gin.Default()
 	ginServer.StaticFile("/robots.txt", "./robots.txt")
 	ginServer.Static("/uploads", "./uploads")
-	ginServer.Use(api.Cors())
-	ginServer.Use(api.TimeoutMiddleware(10000))
-	ginServer.Use(api.InterceptorMiddleware())
-	ginServer.Use(api.IPBanMiddleware())
+	ginServer.Use(middleware.Cors())
+	ginServer.Use(middleware.AccessLog())
+	ginServer.Use(middleware.Timeout(10000))
+	ginServer.Use(middleware.Interceptor())
+	ginServer.Use(middleware.IPBan())
 	ginServer.Use(router.Default())
 
 	if protocol == "https" {
