@@ -54,11 +54,11 @@ create table if not exists tag
 create table if not exists log
 (
     id          int primary key auto_increment,
-    ip          varchar(15)  not null comment '用户ip',
+    ip          varchar(15)  not null comment '用户IP',
     create_time datetime     not null comment '时间',
     url         varchar(255) not null comment '访问网址',
-    ua          varchar(255) not null comment 'user agent',
-    latency     varchar(255)      not null comment '耗时',
+    ua          varchar(255) not null comment 'UA标识',
+    latency     varchar(255)      not null comment '处理耗时',
     index (create_time),
     index (ip),
     index (url)
