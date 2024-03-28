@@ -13,6 +13,7 @@ type Log struct {
 	Url        string
 	Ua         string
 	Latency    string
+	Status     int
 }
 
 func AccessLog() gin.HandlerFunc {
@@ -28,6 +29,7 @@ func AccessLog() gin.HandlerFunc {
 				Url:        c.Request.RequestURI,
 				Ua:         c.Request.UserAgent(),
 				Latency:    latency,
+				Status:     c.Writer.Status(),
 			}
 			database.GetDB().Create(log)
 		}()
