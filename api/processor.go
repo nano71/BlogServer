@@ -13,14 +13,15 @@ func isParameterMissingError(err error) bool {
 }
 func preprocess(c *gin.Context, p interface{}, callback func(*gorm.DB)) {
 	c.Header("Content-Type", "application/json")
-
-	if err := c.ShouldBind(p); err != nil {
-		if isParameterMissingError(err) {
-			response.MissingParameters(c)
-		} else {
-			response.ParameterError(c)
+	if p != nil {
+		if err := c.ShouldBind(p); err != nil {
+			if isParameterMissingError(err) {
+				response.MissingParameters(c)
+			} else {
+				response.ParameterError(c)
+			}
+			return
 		}
-		return
 	}
 
 	callback(database.GetDB())
