@@ -1,10 +1,12 @@
+create database if not exists blog;
+use blog;
 create table if not exists article
 (
     id            int auto_increment
         primary key,
     title         varchar(255)                         not null comment '标题',
     content       text                                 null,
-    description   varchar(255)                         not null comment 'description',
+    description   text                                 not null comment 'description',
     update_time   datetime   default CURRENT_TIMESTAMP not null on update CURRENT_TIMESTAMP,
     create_time   datetime   default CURRENT_TIMESTAMP not null,
     tags          varchar(255)                         null,
@@ -58,7 +60,7 @@ create table if not exists log
     create_time datetime     not null comment '时间',
     url         varchar(255) not null comment '访问网址',
     ua          varchar(255) not null comment 'UA标识',
-    latency     varchar(255)      not null comment '处理耗时',
+    latency     varchar(255) not null comment '处理耗时',
     index (create_time),
     index (ip),
     index (url)
