@@ -115,6 +115,11 @@ func GetArticleContent(c *gin.Context) {
 		}
 		db = db.First(article)
 
+		if db.RowsAffected == 0 {
+			response.Fail(c, "文章不存在")
+			return
+		}
+
 		clientIP := c.ClientIP()
 		if !readerMap[clientIP].include(p.ArticleId) {
 			db.Update("read_count", article.ReadCount+1)
