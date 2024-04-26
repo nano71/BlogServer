@@ -9,7 +9,8 @@ import (
 )
 
 type Tag struct {
-	Name    string `json:"name" gorm:"primaryKey"`
+	Id      int    `json:"id" gorm:"primaryKey"`
+	Name    string `json:"name"`
 	Content string `json:"content"`
 	Count   int64  `json:"count" gorm:"-"`
 }
@@ -62,11 +63,11 @@ func AddCategory(c *gin.Context) {
 
 func DeleteCategory(c *gin.Context) {
 	p := &struct {
-		TagName string `json:"tagName" binding:"required"`
+		TagId int `json:"tagId" binding:"required"`
 	}{}
 	preprocess(c, p, func(db *gorm.DB) {
 		tag := &Tag{
-			Name: p.TagName,
+			Id: p.TagId,
 		}
 		result := db.Delete(tag)
 		if result.RowsAffected == 1 {
@@ -80,11 +81,13 @@ func DeleteCategory(c *gin.Context) {
 
 func UpdateCategory(c *gin.Context) {
 	p := &struct {
+		TagId   int    `json:"tagId" binding:"required"`
 		Name    string `json:"name" binding:"required"`
 		Content string `json:"content" binding:"required"`
 	}{}
 	preprocess(c, p, func(db *gorm.DB) {
 		tag := &Tag{
+			Id:      p.TagId,
 			Name:    p.Name,
 			Content: p.Content,
 		}

@@ -43,28 +43,34 @@ create table if not exists history
 
 create table if not exists tag
 (
-    id         int auto_increment,
-    name       varchar(255)         not null
+    id         int auto_increment
         primary key,
+    name       varchar(255)         not null,
     content    text                 not null,
-    is_visible tinyint(1) default 1 not null,
-    constraint label_pk
-        unique (id)
+    is_visible tinyint(1) default 1 not null
 )
     comment '标签' charset = utf8mb4;
 
 create table if not exists log
 (
-    id          int primary key auto_increment,
-    ip          varchar(15)  not null comment '用户IP',
-    create_time datetime     not null comment '时间',
-    url         varchar(255) not null comment '访问网址',
-    ua          varchar(255) not null comment 'UA标识',
-    latency     varchar(255) not null comment '处理耗时',
-    index (create_time),
-    index (ip),
-    index (url)
+    id          int auto_increment
+        primary key,
+    ip          varchar(15)     not null comment '用户ip',
+    create_time datetime        not null comment '时间',
+    url         varchar(255)    not null comment '访问网址',
+    ua          varchar(255)    not null comment 'user agent',
+    latency     varchar(255)    not null comment '耗时',
+    status      int default 200 not null comment '响应状态'
 )
     comment '操作日志' charset = utf8mb4;
+
+create index create_time
+    on log (create_time);
+
+create index ip
+    on log (ip);
+
+create index url
+    on log (url);
 
 
