@@ -1,0 +1,13 @@
+{
+    "code": 200,
+    "message": "成功",
+    "data": {
+        "id": 12,
+        "title": "",
+        "content": "",
+        "updateTime": "0001-01-01T00:00:00Z",
+        "createTime": "0001-01-01T00:00:00Z",
+        "labels": "",
+        "backgroundImage": ""
+    }
+}

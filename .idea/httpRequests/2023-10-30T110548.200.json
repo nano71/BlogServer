@@ -1,0 +1,17 @@
+{
+    "code": 200,
+    "message": "成功",
+    "data": {
+        "id": 12,
+        "title": "",
+        "description": "",
+        "content": "",
+        "updateTime": "",
+        "createTime": "",
+        "tags": "",
+        "coverImage": "",
+        "readCount": 0,
+        "commentCount": 0,
+        "markdown": ""
+    }
+}

@@ -34,6 +34,7 @@ func Default() gin.HandlerFunc {
 
 	r.POST("/api/manage/getDailyVisitorVolume", api.GetDailyVisitorVolume)
 	r.POST("/api/manage/getDailyBannedCount", api.GetDailyBannedCount)
+	r.POST("/api/manage/getPopularArticles", api.GetPopularArticles)
 
 	r.POST("/api/getMessageList", api.GetMessageList)
 

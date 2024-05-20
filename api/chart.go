@@ -36,7 +36,7 @@ func GetDailyVisitorVolume(c *gin.Context) {
 			date := log.CreateTime.Format("2006-01-02")
 			result[date]++
 		}
-		if len(logs) < 365 {
+		if len(result) < 365 {
 			var startDate time.Time = time.Now().AddDate(-1, 0, 0)
 			var endDate time.Time = time.Now()
 			dates := generateDateList(startDate, endDate)
@@ -91,7 +91,7 @@ func GetDailyBannedCount(c *gin.Context) {
 			date := log.CreateTime.Format("2006-01-02")
 			result[date]++
 		}
-		if len(logs) < 365 {
+		if len(result) < 365 {
 			var startDate = time.Now().AddDate(-1, 0, 0)
 			var endDate = time.Now()
 			dates := generateDateList(startDate, endDate)
@@ -116,6 +116,25 @@ func GetDailyBannedCount(c *gin.Context) {
 		}
 
 		response.Success(c, jsonData)
+	})
+}
+
+func GetPopularArticles(c *gin.Context) {
+	preprocess(c, nil, func(db *gorm.DB) {
+		articles := &[]struct {
+			Id           int       `json:"id"`
+			Title        string    `json:"title"`
+			CreateTime   time.Time `json:"createTime"`
+			ReadCount    int       `json:"readCount"`
+			CommentCount int       `json:"commentCount"`
+		}{}
+		var total int64
+		db.Model(Article{}).Count(&total).Find(articles)
+		data := gin.H{
+			"total": total,
+			"list":  articles,
+		}
+		response.Success(c, data)
 	})
 }
 

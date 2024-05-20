@@ -1,0 +1,115 @@
+{
+    "count": "11",
+    "data": [
+        {
+            "id": "-76161919",
+            "type": "GitHub",
+            "title": "https://github.com/DarMi7/mongo-lambda-query",
+            "context": "a lambda-based object-oriented mongo query plug-in\n基于lambda表达式，且面向对象的mongo数据库查询插件。\n\n",
+            "starPrice": "1",
+            "starNum": "10",
+            "expireTime": "2022-09-26T02:00:00.000Z",
+            "createdAt": "2023-10-21T06:25:44.744Z",
+            "updatedAt": "2023-10-31T03:17:14.610Z"
+        },
+        {
+            "id": "673854575",
+            "type": "GitHub",
+            "title": "https://github.com/myhhub/NetCoreWpfMVVMPrismSample",
+            "context": "",
+            "starPrice": "1",
+            "starNum": "1",
+            "expireTime": "2023-11-09T07:19:13.000Z",
+            "createdAt": "2023-10-30T07:20:30.763Z",
+            "updatedAt": "2023-10-31T03:17:10.993Z"
+        },
+        {
+            "id": "-441319029",
+            "type": "GitHub",
+            "title": "https://github.com/BeardedManZhao/dataTear",
+            "context": "数据io优化框架，实现分块选块并行读写，减少冗余io",
+            "starPrice": "1",
+            "starNum": "3",
+            "expireTime": "2022-11-01T10:16:59.000Z",
+            "createdAt": "2022-10-22T10:16:59.241Z",
+            "updatedAt": "2023-10-31T03:17:08.563Z"
+        },
+        {
+            "id": "-1584387285",
+            "type": "GitHub",
+            "title": "https://github.com/bitwaitcom/BitExchange",
+            "context": "区块链项目合集，中心化交易所，去中心化交易所，智能合约，跟单app，量化app，qq328062668",
+            "starPrice": "1",
+            "starNum": "4",
+            "expireTime": "2022-09-26T02:00:00.000Z",
+            "createdAt": "2023-04-13T00:26:16.620Z",
+            "updatedAt": "2023-10-31T03:17:06.256Z"
+        },
+        {
+            "id": "-1978825989",
+            "type": "GitHub",
+            "title": "https://github.com/kosaka-bun/qqrobot-sdk",
+            "context": "欢迎关注作者，有关必回。",
+            "starPrice": "1",
+            "starNum": "4",
+            "expireTime": "2022-09-26T02:00:00.000Z",
+            "createdAt": "2022-11-16T13:47:50.163Z",
+            "updatedAt": "2023-10-31T03:13:03.058Z"
+        },
+        {
+            "id": "-1043711523",
+            "type": "GitHub",
+            "title": "https://github.com/myhhub/stock",
+            "context": "",
+            "starPrice": "1",
+            "starNum": "4",
+            "expireTime": "2022-09-26T02:00:00.000Z",
+            "createdAt": "2023-10-30T07:27:29.074Z",
+            "updatedAt": "2023-10-31T02:19:20.686Z"
+        },
+        {
+            "id": "-1044771285",
+            "type": "GitHub",
+            "title": "https://github.com/tsinghua-lau/fusion-ui",
+            "context": "前端Ui组件库",
+            "starPrice": "1",
+            "starNum": "3",
+            "expireTime": "2022-09-26T02:00:00.000Z",
+            "createdAt": "2023-09-07T10:47:33.535Z",
+            "updatedAt": "2023-10-31T01:12:50.429Z"
+        },
+        {
+            "id": "1217274549",
+            "type": "GitHub",
+            "title": "https://github.com/TuGraph-family/tugraph-analytics",
+            "context": "TuGraph-analytics is a distribute streaming graph computing engine.",
+            "starPrice": "1",
+            "starNum": "1",
+            "expireTime": "2022-09-26T02:00:00.000Z",
+            "createdAt": "2023-07-28T08:37:42.042Z",
+            "updatedAt": "2023-10-29T03:43:14.285Z"
+        },
+        {
+            "id": "613569703",
+            "type": "GitHub",
+            "title": "https://github.com/agi-brain/xuanpolicy",
+            "context": "XuanPolicy is an open-source ensemble of Deep Reinforcement Learning (DRL) algorithm implementations.",
+            "starPrice": "1",
+            "starNum": "1",
+            "expireTime": "2023-09-02T02:53:52.000Z",
+            "createdAt": "2023-08-23T02:53:52.574Z",
+            "updatedAt": "2023-08-23T02:53:52.574Z"
+        },
+        {
+            "id": "282516653",
+            "type": "GitHub",
+            "title": "https://github.com/auxten/chdb",
+            "context": "chDB is an embedded SQL OLAP Engine powered by ClickHouse",
+            "starPrice": "1",
+            "starNum": "9",
+            "expireTime": "2022-09-26T02:00:00.000Z",
+            "createdAt": "2023-04-25T13:37:38.386Z",
+            "updatedAt": "2023-05-03T11:12:02.421Z"
+        }
+    ]
+}

@@ -1,0 +1,30 @@
+{
+    "code": 200,
+    "message": "成功",
+    "data": [
+        {
+            "date": "2024-03-27",
+            "visitorVolume": 1
+        },
+        {
+            "date": "2024-03-28",
+            "visitorVolume": 9
+        },
+        {
+            "date": "2024-03-29",
+            "visitorVolume": 4
+        },
+        {
+            "date": "2024-03-30",
+            "visitorVolume": 4
+        },
+        {
+            "date": "2024-03-31",
+            "visitorVolume": 2
+        },
+        {
+            "date": "2024-04-01",
+            "visitorVolume": 5
+        }
+    ]
+}
