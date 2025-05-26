@@ -5,65 +5,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="91c7d2cd-31ce-4210-bf4c-1fe9f18da34f" name="变更" comment="add more feature">
-      <change afterPath="$PROJECT_DIR$/.idea/.name" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources/289479e2-32fc-4321-ad63-bd1dc1bd8bec.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources/289479e2-32fc-4321-ad63-bd1dc1bd8bec/storage_v2/_src_/schema/blog.oi8uAA.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources/289479e2-32fc-4321-ad63-bd1dc1bd8bec/storage_v2/_src_/schema/information_schema.FNRwLQ.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources/289479e2-32fc-4321-ad63-bd1dc1bd8bec/storage_v2/_src_/schema/mysql.osA4Bg.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources/289479e2-32fc-4321-ad63-bd1dc1bd8bec/storage_v2/_src_/schema/performance_schema.kIw0nw.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources/289479e2-32fc-4321-ad63-bd1dc1bd8bec/storage_v2/_src_/schema/sys.zb4BAA.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources/289479e2-32fc-4321-ad63-bd1dc1bd8bec/storage_v2/_src_/schema/test.kkQ2AA.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/httpRequests/2023-10-18T103924.400.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/httpRequests/2023-10-18T103948.200.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/httpRequests/2023-10-19T092346.400.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/httpRequests/2023-10-19T092426.200.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/httpRequests/2023-10-19T182756.200.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/httpRequests/2023-10-20T113651.200.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/httpRequests/2023-10-20T113707.400.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/httpRequests/2023-10-20T113716.200.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/httpRequests/2023-10-21T192315.400.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/httpRequests/2023-10-21T192528.400.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/httpRequests/2023-10-21T192534.200.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/httpRequests/2023-10-21T192633.200.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/httpRequests/2023-10-21T192744.200.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/httpRequests/2023-10-21T200402.400.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/httpRequests/2023-10-21T200755.400.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/httpRequests/2023-10-21T203244.400.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/httpRequests/2023-10-21T203601.400.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/httpRequests/2023-10-21T204023.400.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/httpRequests/2023-10-30T090738.200.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/httpRequests/2023-10-30T091002.200.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/httpRequests/2023-10-30T091251.200.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/httpRequests/2023-10-30T091514.200.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/httpRequests/2023-10-30T094230.200.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/httpRequests/2023-10-30T094301.200.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/httpRequests/2023-10-30T102544.200.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/httpRequests/2023-10-30T110548.200.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/httpRequests/2023-10-30T110703.200.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/httpRequests/2023-10-30T110955.504.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/httpRequests/2023-10-30T111015.200.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/httpRequests/2023-10-30T111107.200.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/httpRequests/2023-10-30T111201.504.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/httpRequests/2023-10-30T111448.504.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/httpRequests/2023-10-30T111458.200.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/httpRequests/2023-10-30T111519.200.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/httpRequests/2023-10-30T185013.500.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/httpRequests/2023-10-30T185028.500.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/httpRequests/2023-10-30T185106.200.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/httpRequests/2023-10-30T185111.200.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/httpRequests/2023-10-30T185125.500.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/httpRequests/2023-10-31T111826.200.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/httpRequests/2024-04-01T215318.400.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/httpRequests/2024-04-01T215331.400.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/httpRequests/2024-04-01T215337.400.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/httpRequests/2024-04-01T215443.400.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/httpRequests/2024-04-01T215451.200.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/httpRequests/2024-04-01T215510.200.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/httpRequests/http-client.cookies" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/httpRequests/http-requests-log.http" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sqldialects.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/out/blogServer.exe" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/out/blogServer_linux" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/out/nohup.out" afterDir="false" />
@@ -71,10 +12,15 @@
       <change afterPath="$PROJECT_DIR$/uploads/1711284240920-707e0b6dc9133ee6386c3df7a23b985c532e9506.jpg" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/uploads/1711284280984-707e0b6dc9133ee6386c3df7a23b985c532e9506.jpg" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/uploads/1711597771075-unnamed.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BlogServer.iml" beforeDir="false" afterPath="$PROJECT_DIR$/BlogServer.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/chart.go" beforeDir="false" afterPath="$PROJECT_DIR$/api/chart.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/289479e2-32fc-4321-ad63-bd1dc1bd8bec.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/289479e2-32fc-4321-ad63-bd1dc1bd8bec.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/289479e2-32fc-4321-ad63-bd1dc1bd8bec/storage_v2/_src_/schema/mysql.osA4Bg.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/289479e2-32fc-4321-ad63-bd1dc1bd8bec/storage_v2/_src_/schema/mysql.osA4Bg.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/database/database.go" beforeDir="false" afterPath="$PROJECT_DIR$/database/database.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/router/routes.go" beforeDir="false" afterPath="$PROJECT_DIR$/router/routes.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/go.mod" beforeDir="false" afterPath="$PROJECT_DIR$/go.mod" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/go.sum" beforeDir="false" afterPath="$PROJECT_DIR$/go.sum" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/main.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -101,7 +47,7 @@
       <set />
     </option>
   </component>
-  <component name="GOROOT" url="file://$PROJECT_DIR$/../../../../sdk/go1.21.3" />
+  <component name="GOROOT" url="file://$PROJECT_DIR$/../../../../sdk/go" />
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="RESET_MODE" value="SOFT" />
@@ -127,13 +73,6 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
-  <component name="OptimizeOnSaveOptions">
-    <option name="myRunOnSave" value="false" />
-    <option name="myAllFileTypesSelected" value="true" />
-    <option name="mySelectedFileTypes">
-      <set />
-    </option>
-  </component>
   <component name="ProblemsViewState">
     <option name="selectedTabId" value="CurrentFile" />
   </component>
@@ -141,63 +80,63 @@
   &quot;associatedIndex&quot;: 7
 }</component>
   <component name="ProjectId" id="2I4zHc4TamRQZaFox3g74HnVAp4" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
     <option name="showMembers" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;DefaultGoTemplateProperty&quot;: &quot;Go File&quot;,
-    &quot;Go 构建.build.executor&quot;: &quot;Run&quot;,
-    &quot;HTTP 请求.rest-api | #1.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.go.format.on.save.advertiser.fired&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.go.formatter.settings.were.checked&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.go.migrated.go.modules.settings&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.go.modules.automatic.dependencies.download&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;Shell Script.gowatch.executor&quot;: &quot;Run&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowPanel.toolwindow.highlight.mappings&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowPanel.toolwindow.highlight.symlinks&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowPanel.toolwindow.show.date&quot;: &quot;false&quot;,
-    &quot;WebServerToolWindowPanel.toolwindow.show.permissions&quot;: &quot;false&quot;,
-    &quot;WebServerToolWindowPanel.toolwindow.show.size&quot;: &quot;false&quot;,
-    &quot;configurable..is.expanded&quot;: &quot;true&quot;,
-    &quot;configurable.GoLibrariesConfigurable.is.expanded&quot;: &quot;true&quot;,
-    &quot;dart.analysis.tool.window.visible&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;go.import.settings.migrated&quot;: &quot;true&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/Administrator/IdeaProjects/BlogServer&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;项目&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;Errors&quot;,
-    &quot;show.migrate.to.gradle.popup&quot;: &quot;false&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;,
-    &quot;数据库脚本.setup.sql.executor&quot;: &quot;Run&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "DefaultGoTemplateProperty": "Go File",
+    "Go 构建.build.executor": "Run",
+    "HTTP 请求.rest-api | #1.executor": "Run",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "RunOnceActivity.go.format.on.save.advertiser.fired": "true",
+    "RunOnceActivity.go.formatter.settings.were.checked": "true",
+    "RunOnceActivity.go.migrated.go.modules.settings": "true",
+    "RunOnceActivity.go.modules.automatic.dependencies.download": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "Shell Script.gowatch.executor": "Run",
+    "WebServerToolWindowFactoryState": "true",
+    "WebServerToolWindowPanel.toolwindow.highlight.mappings": "true",
+    "WebServerToolWindowPanel.toolwindow.highlight.symlinks": "true",
+    "WebServerToolWindowPanel.toolwindow.show.date": "false",
+    "WebServerToolWindowPanel.toolwindow.show.permissions": "false",
+    "WebServerToolWindowPanel.toolwindow.show.size": "false",
+    "configurable..is.expanded": "true",
+    "configurable.GoLibrariesConfigurable.is.expanded": "true",
+    "dart.analysis.tool.window.visible": "false",
+    "git-widget-placeholder": "master",
+    "go.import.settings.migrated": "true",
+    "ignore.virus.scanning.warn.message": "true",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/Administrator/IdeaProjects/BlogServer",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "项目",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.2",
+    "run.code.analysis.last.selected.profile": "pProject Default",
+    "settings.editor.selected.configurable": "go.sdk",
+    "show.migrate.to.gradle.popup": "false",
+    "vue.rearranger.settings.migration": "true",
+    "数据库脚本.setup.sql.executor": "Run"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;DatabaseDriversLRU&quot;: [
-      &quot;mysql&quot;
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "mysql"
     ],
-    &quot;RunConfigurationTargetLRU&quot;: [
-      &quot;289479e2-32fc-4321-ad63-bd1dc1bd8bec&quot;,
-      &quot;289479e2-32fc-4321-ad63-bd1dc1bd8bec/schema/\&quot;blog\&quot;&quot;
+    "RunConfigurationTargetLRU": [
+      "289479e2-32fc-4321-ad63-bd1dc1bd8bec",
+      "289479e2-32fc-4321-ad63-bd1dc1bd8bec/schema/\"blog\""
     ]
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\Administrator\IdeaProjects\blogServer\out" />
@@ -207,7 +146,7 @@
       <recent name="C:\Users\Administrator\IdeaProjects\blogServer\out" />
     </key>
   </component>
-  <component name="RunManager" selected="Shell Script.gowatch">
+  <component name="RunManager" selected="Go 构建.build">
     <configuration name="setup.sql" type="DatabaseScript" editBeforeRun="true" temporary="true" nameIsGenerated="true">
       <script-file value="$PROJECT_DIR$/setup.sql" />
       <script-mode>FILE</script-mode>
@@ -249,16 +188,16 @@
       <framework value="gotest" />
       <method v="2" />
     </configuration>
-    <configuration name="rest-api | #1" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$APPLICATION_CONFIG_DIR$/scratches/rest-api.http" requestIdentifier="#1" runType="运行单个请求">
+    <configuration name="rest-api | #1" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$APPLICATION_CONFIG_DIR$/scratches/rest-api.http" runType="运行单个请求">
       <method v="2" />
     </configuration>
-    <configuration name="rest-api | #2" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$APPLICATION_CONFIG_DIR$/scratches/rest-api.http" index="2" requestIdentifier="#2" runType="运行单个请求">
+    <configuration name="rest-api | #2" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$APPLICATION_CONFIG_DIR$/scratches/rest-api.http" index="2" runType="运行单个请求">
       <method v="2" />
     </configuration>
-    <configuration name="rest-api_5 | #1" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$APPLICATION_CONFIG_DIR$/scratches/rest-api_5.http" requestIdentifier="#1" runType="运行单个请求">
+    <configuration name="rest-api_5 | #1" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$APPLICATION_CONFIG_DIR$/scratches/rest-api_5.http" runType="运行单个请求">
       <method v="2" />
     </configuration>
-    <configuration name="rest-api_5 | #6" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$APPLICATION_CONFIG_DIR$/scratches/rest-api_5.http" index="6" requestIdentifier="#6" runType="运行单个请求">
+    <configuration name="rest-api_5 | #6" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$APPLICATION_CONFIG_DIR$/scratches/rest-api_5.http" index="6" runType="运行单个请求">
       <method v="2" />
     </configuration>
     <list>
@@ -292,8 +231,8 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-jdk-9f38398b9061-39b83d9b5494-intellij.indexing.shared.core-IU-241.15989.150" />
-        <option value="bundled-js-predefined-1d06a55b98c1-91d5c284f522-JavaScript-IU-241.15989.150" />
+        <option value="bundled-jdk-9823dce3aa75-fbdcb00ec9e3-intellij.indexing.shared.core-IU-251.25410.129" />
+        <option value="bundled-js-predefined-d6986cc7102b-6a121458b545-JavaScript-IU-251.25410.129" />
       </set>
     </attachedChunks>
   </component>
@@ -420,7 +359,17 @@
       <workItem from="1714137082840" duration="1266000" />
       <workItem from="1715867445228" duration="2608000" />
       <workItem from="1715873531071" duration="284000" />
-      <workItem from="1716194747952" duration="3788000" />
+      <workItem from="1716194747952" duration="3894000" />
+      <workItem from="1716201240750" duration="137000" />
+      <workItem from="1716342462058" duration="1324000" />
+      <workItem from="1716351567505" duration="47000" />
+      <workItem from="1717467119201" duration="83000" />
+      <workItem from="1717467292834" duration="655000" />
+      <workItem from="1719284447772" duration="635000" />
+      <workItem from="1727395514876" duration="797000" />
+      <workItem from="1727407772380" duration="90000" />
+      <workItem from="1740614896525" duration="338000" />
+      <workItem from="1748218293985" duration="2400000" />
     </task>
     <task id="LOCAL-00001" summary="变更">
       <option name="closed" value="true" />
@@ -710,7 +659,15 @@
       <option name="project" value="LOCAL" />
       <updated>1714138213494</updated>
     </task>
-    <option name="localTasksCounter" value="37" />
+    <task id="LOCAL-00037" summary="add more feature">
+      <option name="closed" value="true" />
+      <created>1716199936972</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1716199936972</updated>
+    </task>
+    <option name="localTasksCounter" value="38" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -753,6 +710,17 @@
   </component>
   <component name="VgoProject">
     <settings-migrated>true</settings-migrated>
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="DlvLineBreakpoint">
+          <url>file://$PROJECT_DIR$/main.go</url>
+          <line>120</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

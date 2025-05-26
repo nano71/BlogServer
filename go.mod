@@ -5,7 +5,7 @@ go 1.21.3
 require (
 	github.com/gin-contrib/timeout v0.0.3
 	github.com/gin-gonic/gin v1.9.1
-	github.com/golang-jwt/jwt/v5 v5.0.0
+	github.com/golang-jwt/jwt/v5 v5.2.2
 	gorm.io/driver/mysql v1.5.2
 	gorm.io/gorm v1.25.5
 )

@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="dataSourceStorageLocal" created-in="IU-241.15989.150">
-    <data-source name="@nano71.com" uuid="289479e2-32fc-4321-ad63-bd1dc1bd8bec">
+  <component name="dataSourceStorageLocal" created-in="IU-251.25410.129">
+    <data-source name="blog@nano71.com" uuid="289479e2-32fc-4321-ad63-bd1dc1bd8bec">
       <database-info product="MySQL" version="5.7.42-0ubuntu0.18.04.1" jdbc-version="4.2" driver-name="MySQL Connector/J" driver-version="mysql-connector-j-8.2.0 (Revision: 06a1f724497fd81c6a659131fda822c9e5085b6c)" dbms="MYSQL" exact-version="5.7.42" exact-driver-version="8.2">
         <extra-name-characters>#@</extra-name-characters>
         <identifier-quote-string>`</identifier-quote-string>
-        <jdbc-catalog-is-schema>true</jdbc-catalog-is-schema>
       </database-info>
       <case-sensitivity plain-identifiers="exact" quoted-identifiers="exact" />
       <secret-storage>master_key</secret-storage>
@@ -13,9 +12,8 @@
       <schema-mapping>
         <introspection-scope>
           <node kind="schema">
+            <name qname="@" />
             <name qname="blog" />
-            <name qname="mysql" />
-            <name qname="test" />
           </node>
         </introspection-scope>
       </schema-mapping>
