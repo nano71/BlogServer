@@ -12,7 +12,6 @@ import (
 	"time"
 )
 
-type CertReloader struct 
 type CertReloader struct {
 	mu       sync.RWMutex
 	cert     *tls.Certificate

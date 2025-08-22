@@ -2,9 +2,12 @@ package api
 
 import (
 	"blogServer/response"
-	"github.com/gin-gonic/gin"
+	"crypto/md5"
+	"fmt"
 	"strconv"
 	"time"
+
+	"github.com/gin-gonic/gin"
 )
 
 func UploadImage(c *gin.Context) {
@@ -13,7 +16,9 @@ func UploadImage(c *gin.Context) {
 		response.MissingParameters(c)
 		return
 	}
-	imagePath := "uploads/" + strconv.Itoa(int(time.Now().UnixNano()/1e6)) + "-" + file.Filename
+	filename := []byte(file.Filename)
+	hash := md5.Sum(filename)
+	imagePath := "uploads/" + strconv.Itoa(int(time.Now().UnixNano()/1e6)) + "-" + fmt.Sprintf("%x", hash)
 	err = c.SaveUploadedFile(file, imagePath)
 	if err != nil {
 		response.Fail(c, "文件保存失败")

@@ -2,10 +2,11 @@ package database
 
 import (
 	"fmt"
+	"log/slog"
+
 	"gorm.io/driver/mysql"
 	"gorm.io/gorm"
 	"gorm.io/gorm/schema"
-	"log/slog"
 )
 
 var _db *gorm.DB
