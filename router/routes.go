@@ -2,6 +2,7 @@ package router
 
 import (
 	"blogServer/api"
+
 	"github.com/gin-gonic/gin"
 )
 
@@ -33,7 +34,9 @@ func Default() gin.HandlerFunc {
 	r.POST("/api/manage/getArticleList", api.ManagerGetArticleList)
 
 	r.POST("/api/manage/getDailyVisitorVolume", api.GetDailyVisitorVolume)
+
 	r.POST("/api/manage/getDailyBannedCount", api.GetDailyBannedCount)
+
 	r.POST("/api/manage/getPopularArticles", api.GetPopularArticles)
 
 	r.POST("/api/getMessageList", api.GetMessageList)
@@ -51,6 +54,17 @@ func Default() gin.HandlerFunc {
 	r.POST("/api/getPermission", api.GetPermission)
 
 	r.POST("/api/updateArticleCommentCount", api.UpdateArticleCommentCount)
+
+	r.GET("/sitemap.xml", api.ArticlesSitemap)
+
+	r.GET("/robots.txt", func(c *gin.Context) {
+		robots := `User-agent: *
+Disallow: /manage/
+Allow: /
+Sitemap: https://blog.nano71.com/sitemap.xml
+`
+		c.Data(200, "text/plain; charset=utf-8", []byte(robots))
+	})
 
 	return r.Preprocessor()
 }

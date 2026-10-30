@@ -3,13 +3,15 @@ package main
 import (
 	"blogServer/middleware"
 	"blogServer/router"
+	"bytes"
 	"crypto/tls"
 	"flag"
-	"github.com/gin-gonic/gin"
 	"log/slog"
 	"net/http"
 	"sync"
 	"time"
+
+	"github.com/gin-gonic/gin"
 )
 
 type CertReloader struct {
@@ -42,6 +44,16 @@ func (cr *CertReloader) watch() {
 			slog.Error("SSL reload failed", "error", err)
 			continue
 		}
+
+		// 比较证书指纹，未变化则跳过
+		cr.mu.RLock()
+		same := cr.cert != nil &&
+			bytes.Equal(cr.cert.Certificate[0], cert.Certificate[0])
+		cr.mu.RUnlock()
+		if same {
+			continue
+		}
+
 		cr.mu.Lock()
 		cr.cert = cert
 		cr.mu.Unlock()
@@ -80,7 +92,6 @@ func main() {
 	}
 
 	ginServer := gin.Default()
-	ginServer.StaticFile("/robots.txt", "./robots.txt")
 	ginServer.Static("/uploads", "./uploads")
 	ginServer.Use(middleware.Cors())
 	ginServer.Use(middleware.AccessLog())
@@ -93,8 +104,8 @@ func main() {
 
 	var runError error
 	if protocol == "https" {
-		certFile := "/etc/nginx/ssl/nano71.com.crt"
-		keyFile := "/etc/nginx/ssl/nano71.com.key"
+		certFile := "/etc/nginx/ssl/any.nano71.com.crt"
+		keyFile := "/etc/nginx/ssl/any.nano71.com.key"
 
 		certReloader, err := NewCertReloader(certFile, keyFile)
 		if err != nil {

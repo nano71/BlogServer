@@ -3,9 +3,10 @@ package router
 import (
 	"crypto/rand"
 	"encoding/base64"
+	"net/http"
+
 	"github.com/gin-gonic/gin"
 	"github.com/golang-jwt/jwt/v5"
-	"net/http"
 )
 
 // Router 自定义路由器

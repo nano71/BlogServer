@@ -2,9 +2,12 @@ package api
 
 import (
 	"blogServer/response"
+	"fmt"
+	"strings"
+	"time"
+
 	"github.com/gin-gonic/gin"
 	"gorm.io/gorm"
-	"time"
 )
 
 type ReaderMap map[string]ReadArticles
@@ -243,4 +246,35 @@ func DeleteArticle(c *gin.Context) {
 			response.Fail(c, "文章删除失败")
 		}
 	})
+}
+
+func ArticlesSitemap(c *gin.Context) {
+	// 1. 模拟从数据库或缓存获取你的 URL 数据
+	// 实际项目中，请务必使用绝对路径 (https://...)
+
+	preprocess(c, nil, func(db *gorm.DB) {
+
+		articles := &[]struct {
+			Id         int    `json:"id"`
+			UpdateTime string `json:"updateTime"`
+		}{}
+
+		db.Model(Article{}).Find(articles)
+
+		// 2. 手动构建 XML
+		var buf strings.Builder
+		buf.WriteString(`<?xml version="1.0" encoding="UTF-8"?>`)
+		buf.WriteString(`<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">`)
+
+		for _, article := range *articles {
+			buf.WriteString(fmt.Sprintf(`<url><loc>https://blog.nano71.com/articles/%d</loc><lastmod>%s</lastmod></url>`,
+				article.Id, article.UpdateTime))
+		}
+
+		buf.WriteString(`</urlset>`)
+
+		// 3. 直接输出字节流，避免 Gin 添加额外的引号或换行
+		c.Data(200, "application/xml; charset=utf-8", []byte(buf.String()))
+	})
+
 }

@@ -2,8 +2,9 @@ package middleware
 
 import (
 	"blogServer/database"
-	"github.com/gin-gonic/gin"
 	"time"
+
+	"github.com/gin-gonic/gin"
 )
 
 type Log struct {
