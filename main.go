@@ -104,8 +104,8 @@ func main() {
 
 	var runError error
 	if protocol == "https" {
-		certFile := "/etc/nginx/ssl/any.nano71.com.crt"
-		keyFile := "/etc/nginx/ssl/any.nano71.com.key"
+		certFile := "/etc/nginx/ssl/nano71.com.crt"
+		keyFile := "/etc/nginx/ssl/nano71.com.key"
 
 		certReloader, err := NewCertReloader(certFile, keyFile)
 		if err != nil {
